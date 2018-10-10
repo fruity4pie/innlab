@@ -1,0 +1,32 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "My first gulp project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "author": "fruity4pie",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "*",
+    "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-babel": "*",
+    "babel-core": "*",
+    "babel-preset-env": "*",
+    "gulp-concat": "*",
+    "gulp-cssnano": "*",
+    "gulp-rename": "*",
+    "gulp-rigger": "*",
+    "gulp-sass": "*",
+    "gulp-uglifyjs": "*"
+  },
+  "dependencies": {}
+}
