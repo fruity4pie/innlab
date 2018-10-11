@@ -24,18 +24,6 @@ $(document).ready(function(){
 		$('body').removeClass('active');
 	})
 
-	var params = {
-	    container: document.getElementById('lottie'),
-	    renderer: 'svg',
-	    loop: true,
-	    autoplay: true,
-	    path: 'js/data.json'
-	};
-
-	var anim;
-
-	anim = lottie.loadAnimation(params);
-
 	//Background parallax
 	// $(window).mousemove(function(e) {
  //    	var change;
@@ -55,4 +43,31 @@ $(document).ready(function(){
 		if (scroll >= 100) sticky.addClass('fixed');
 		else sticky.removeClass('fixed');
 	});
+
+	$('.slider').owlCarousel({
+	    loop:true,
+	    nav:true,
+	    navText: [`<i class="fas fa-angle-left"></i>`, `<i class="fas fa-angle-right"></i>`],
+	    dots: false,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	    }
+	})
 })
+
+let container = document.getElementById('lottie');
+if(container) {
+	var params = {
+	    container,
+	    renderer: 'svg',
+	    loop: true,
+	    autoplay: true,
+	    path: 'js/data.json'
+	};
+
+	var anim;
+
+	anim = lottie.loadAnimation(params);
+}

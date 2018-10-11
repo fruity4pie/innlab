@@ -682,8 +682,7 @@ h5
 				width: 100%
 	.btn-plus
 		cursor: pointer
-		display: flex
-		flex-flow: row nowrap
+		@include frnw
 		justify-content: center
 		align-items: center
 		width: 44px
@@ -709,5 +708,63 @@ h5
 	h2
 		color: #000
 
+.slider
+	&__item
+		position: relative
+		padding: 245px 0 90px
+		img
+			height: 100%
+			position: absolute
+			top: 0
+			bottom: 0
+			right: 0
+			left: 0
+			background: rgba(0, 0, 0, 1)
+	&__t-b
+		@include frnw
+		justify-content: space-between
+		div
+			@include fcnw
+	h2
+		text-transform: none
+		max-width: 495px
+	time
+		font-size: 30px
+		margin-bottom: 20px
+		&:nth-of-type(2)
+			font-weight: 500
+			opacity: .3
+			margin: 0
+	.owl-nav
+		color: #fff
+		position: absolute
+		top: 70px
+		right: 21%
+		z-index: 2
+		.owl-prev, .owl-next
+			opacity: .1
+			font-size: 60px !important
+			line-height: 55px !important
+			&:focus
+				outline: none
+		.owl-prev
+			margin-right: 50px
+
+.cont
+	overflow: hidden
+	svg
+		overflow: hidden
+		position: relative
+		z-index: 2
+	img
+		position: absolute
+		z-index: 1
+		top: 0
+		left: 0
+	p
+		color: #79828b
+		line-height: 28px
+		&:not(:last-of-type)
+			margin-bottom: 20px
 
 @import "./media"
