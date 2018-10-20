@@ -3,6 +3,35 @@
 		.img-parallax
 			display: none
 
+@media screen and (max-width: 1280px)
+	.inn-lab
+		h1
+			margin-bottom: 10px
+		p
+			margin-bottom: 20px
+
+	.social
+		&_clmn
+			position: relative
+			top: auto
+			left: auto
+			display: flex
+			flex-flow: row nowrap
+			padding: 0
+			border: none
+			margin: 0 0 25px
+			a
+				&:not(:last-child)
+					margin: 0 15px 0 0
+
+@media screen and (max-width: 1200px)
+	.inn-lab
+		padding: 195px 0 0
+		.svg-wrap
+			svg
+				position: relative
+				top: auto
+
 @media screen and (max-width: 992px)
 	h2
 		font-size: 22px
@@ -13,10 +42,6 @@
 
 	.header
 		&__list
-			display: none
-
-	.inn-lab
-		.social
 			display: none
 
 	.halves
@@ -86,3 +111,8 @@
 	.form
 		label
 			max-width: none
+
+@media screen and (max-width: 490px)
+	.footer
+		&:after
+			bottom: 100px

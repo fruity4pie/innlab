@@ -49,7 +49,7 @@ gulp.task('css-libs', ['sass'], function() {
 
 gulp.task('scripts', function() {
   return gulp.src([ // Берем все необходимые библиотеки
-    'app/libs/jquery/dist/jquery.js',
+		'app/libs/jquery/dist/jquery.js',
     'app/libs/fancybox/dist/jquery.fancybox.js',
     'app/libs/lottie/build/player/lottie.js',
     'app/libs/owl.carousel/dist/owl.carousel.js',
