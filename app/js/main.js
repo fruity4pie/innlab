@@ -1,15 +1,20 @@
-(function ($) {
-
 	$(document).ready(function(){
 
 		$(document).mouseup(function (e) {
   		var container = $(".header-m-menu-wrap");
   		if (container.has(e.target).length === 0){
     		container.removeClass('active');
-				container.find('.header-hmb').removeClass('active');
+				container.parent().find('.header-hmb').removeClass('active');
 				$('body').removeClass('active');
   		}
 		});
+
+		//Nav
+		let navLinks = $('.header__list a');
+		navLinks.on('click', function(e) {
+			navLinks.removeClass('is-active');
+			$(this).addClass('is-active');
+		})
 
 		//Hamburger
 		let mobMenu = $('.header-hmb');
@@ -22,8 +27,8 @@
 
 		mobMenuClose.on('click', function(e) {
 			e.preventDefault();
-			mobMenu.removeClass('active');
 			$(this).parent().removeClass('active');
+			mobMenu.removeClass('active');
 			$('body').removeClass('active');
 		});
 
@@ -50,13 +55,66 @@
 		//Carousel
 		$('.slider').owlCarousel({
 	  	loop:true,
+	  	nav:false,
+			autoplay: true,
+			autoplayTimeout: 1500,
+	  	navText: [`<img src="img/arl.png" alt="previous button">`, `<img src="img/arr.png" alt="next button">`],
+	  	dots: false,
+	  	responsive:{
+	    	0:{
+	     		items:1,
+	    	},
+				1100: {
+					items:1,
+					nav: true,
+					autoplay: false
+				}
+	  	}
+		});
+
+		$('.slider-c-b').owlCarousel({
+	  	loop:true,
 	  	nav:true,
 	  	navText: [`<img src="img/arl.png" alt="previous button">`, `<img src="img/arr.png" alt="next button">`],
 	  	dots: false,
 	  	responsive:{
 	    	0:{
-	     		items:1
+	     		items:1,
+					center: true,
+					margin: 0,
+					nav: false
 	    	},
+				960: {
+					items: 2,
+					margin: 120,
+					nav: true
+				}
+	  	}
+		});
+
+		$('.slider-c-b2').owlCarousel({
+	  	loop:true,
+	  	nav:true,
+	  	navText: [`<img src="img/arl.png" alt="previous button">`, `<img src="img/arr.png" alt="next button">`],
+	  	dots: false,
+	  	responsive:{
+	    	0:{
+	     		items:1,
+					center: true,
+					margin: 0,
+					nav: false
+	    	},
+				767: {
+					items: 2,
+					nav: true
+				},
+				960: {
+					items: 3
+				},
+				1100: {
+					items: 4,
+					margin: 133
+				}
 	  	}
 		});
 
@@ -71,20 +129,19 @@
 			$(`#${dataHref}`).addClass('active');
 		})
 
+		let container = document.getElementById('lottie');
+		if(container) {
+			var params = {
+			    container,
+			    renderer: 'svg',
+			    loop: true,
+			    autoplay: true,
+			    path: 'js/data.json'
+			};
+
+			var anim;
+
+			anim = lottie.loadAnimation(params);
+		}
+
 	});
-})(jQuery);
-
-let container = document.getElementById('lottie');
-if(container) {
-	var params = {
-	    container,
-	    renderer: 'svg',
-	    loop: true,
-	    autoplay: true,
-	    path: 'js/data.json'
-	};
-
-	var anim;
-
-	anim = lottie.loadAnimation(params);
-}

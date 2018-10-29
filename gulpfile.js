@@ -53,7 +53,8 @@ gulp.task('scripts', function() {
     'app/libs/fancybox/dist/jquery.fancybox.js',
     'app/libs/lottie/build/player/lottie.js',
     'app/libs/owl.carousel/dist/owl.carousel.js',
-	'app/js/main.js'
+		'app/libs/wow/dist/wow.js',
+		'app/js/main.js'
 	])
 	.pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(babel({ presets: ['env'] }).on('error', onError))

@@ -26,24 +26,26 @@
 
   50%
     opacity: 0.5
-    transform: scale(0.5)
+    transform: scale(0.25)
 
   75%
     opacity: 0.25
 
   100%
     opacity: 0
-    transform: scale(1)
+    transform: scale(0.5)
 
 .row
-  z-index: 5
+  z-index: 6
   position: relative
 
 .svg-wrap
   position: relative
   z-index: 2
-  width: 450px !important
-  height: 350px !important
+  max-width: 552px
+  width: 100% !important
+  max-height: 463px
+  height: 100% !important
 
   svg
     position: absolute
@@ -86,6 +88,10 @@
 .line-left
   &:before
     left: 0
+
+  &_w26
+    &:before
+      width: 26px
 
 .btn
   display: flex
@@ -164,7 +170,8 @@
 .parallax
   img
     position: absolute
-    z-index: 1
+    z-index: 5
+    pointer-events: none
 
 .social
   +frnw
@@ -222,7 +229,7 @@
   color: #00bfb3 !important
 
 .red
-  color: #d43e37
+  color: #d43e37 !important
 
 body
   font: 400 16px / 1 avenir
@@ -265,7 +272,7 @@ h5
   right: 0
   border-bottom: 1px solid rgba(255, 255, 255, 0.1)
   transition: all 0.5s
-  z-index: 100
+  z-index: 50
   background: transparent
 
   &.fixed
@@ -274,7 +281,7 @@ h5
     left: 0
     width: 100%
     background: #f7f7f7
-    z-index: 10
+    z-index: 1000
     color: #000
 
     .header__list
@@ -334,7 +341,7 @@ h5
         background-color: #00bfb3
         transition: all 0.3s
 
-      &.active
+      &.is-active
         opacity: 1
 
         &:after
@@ -374,7 +381,7 @@ h5
         +fcnw
 
         flex-wrap: wrap
-        justify-content: space-between
+        justify-content: flex-start
         height: 270px
 
         li
@@ -418,6 +425,9 @@ h5
 
         &:hover:before, &:hover:after
           background: #fff
+
+    &-btn
+      background: url("../img/hexm.png") no-repeat (center / cover) transparent
 
   &-hmb
     width: 44px
@@ -598,8 +608,30 @@ h5
     padding-left: 141px
 
 .stream
+  position: relative
+  overflow: hidden
+
   .container-fluid
     padding: 0
+
+  .row
+    z-index: 5
+    position: relative
+
+  .parallax
+    img
+      &:nth-of-type(1)
+        left: 44px
+        bottom: -65px
+
+      &:nth-of-type(2)
+        left: 50%
+        top: 5px
+        transform: translate(-50%, 0)
+
+      &:nth-of-type(3)
+        right: 0
+        bottom: 0
 
   h2
     text-transform: none
@@ -766,6 +798,10 @@ h5
         margin-bottom: 40px
         display: inline-block
 
+  &_scroll
+    overflow-x: auto
+    overflow-y: hidden
+
 .projects
   .container-fluid
     padding: 0
@@ -803,6 +839,10 @@ h5
   position: relative
   color: #fff
 
+  .row
+    position: relative
+    z-index: 20
+
   .parallax
     img
       &:nth-child(1)
@@ -821,8 +861,10 @@ h5
     margin-bottom: 70px
 
   &-b
-    margin-bottom: 50px
-    text-align: center
+    max-width: 300px
+    width: 100%
+    margin: 0 auto 50px
+    text-align: left
 
     &:hover .l-projects-b__img-l
       transform: rotate(360deg)
@@ -831,11 +873,15 @@ h5
     svg
       max-width: 263px
       width: 100%
-      height: 240px
+      height: 100%
 
       .node
         height: 100%
         width: 100%
+
+      image
+        height: 195px
+        width: 219px
 
       g
         position: relative
@@ -857,14 +903,13 @@ h5
         width: 263px
         height: 240px
         position: relative
-        margin: 0 auto 30px
-        background: url("../img/bg1.png") no-repeat transparent
+        margin: 0 0 30px
+        background: url(../img/bg1.png) no-repeat transparent
 
       &-c
         width: 219px
         height: 195px
-        -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 30%, 100% 70%, 80% 100%, 30% 100%, 0% 100%, 0% 20%)
-        clip-path: polygon(25% 0%, 75% 0%, 100% 30%, 100% 70%, 80% 100%, 30% 100%, 0% 100%, 0% 20%)
+        clip-path: polygon(0.9% 50.75%, 1.35% 47.7%, 7.75% 34.35%, 16.9% 17.95%, 23.75% 4.6%, 26.95% 2.55%, 29.2% 1.55%, 51.15% 1.55%, 64.85% 1.55%, 72.15% 2.05%, 75.35% 3.6%, 76.7% 5.65%, 85.85% 21.55%, 93.15% 36.4%, 98.15% 46.15%, 99.1% 50.75%, 98.15% 54.35%, 96.35% 58.45%, 91.3% 68.2%, 84.45% 82.05%, 79.45% 91.8%, 77.15% 96.4%, 75.35% 98.45%, 72.15% 100%, 67.1% 100%, 28.3% 100.5%, 25.55% 98.95%, 23.75% 96.9%, 16.9% 83.6%, 6.4% 64.1%, 1.35% 53.85%)
 
         img
           width: 100%
@@ -882,6 +927,10 @@ h5
 
         justify-content: center
         align-items: center
+
+        img
+          width: 16px
+          height: 16px
 
 #latest-blog, #project
   display: none
@@ -1065,6 +1114,14 @@ h5
   .social
     margin-bottom: 30px
 
+#simplenews-subscriptions-block-5d15abb8-187e-4e55-b366-cffe133aa8e5
+  .description
+    display: none
+
+  input
+    max-width: 194px
+    height: 35px
+
 //JoinOurTeam/Contacts
 
 .jot
@@ -1075,8 +1132,13 @@ h5
 
   .parallax
     img
-      top: 0
-      left: -50px
+      &:nth-of-type(1)
+        top: 0
+        left: -50px
+
+      &:nth-of-type(2)
+        right: 0
+        bottom: 62px
 
   h2
     margin-bottom: 50px
@@ -1084,6 +1146,7 @@ h5
   p
     line-height: 28px
     color: #79828b
+    position: relative
 
   &_con
     .parallax
@@ -1104,6 +1167,14 @@ h5
           top: auto
 
   &_t-p
+    h2 + p
+      &::before
+        content: url(../img/arrowwl.png)
+        position: absolute
+        bottom: -70px
+        right: -145px
+        transform: rotate(-125deg)
+
     .parallax
       img
         &:nth-child(2)
@@ -1112,11 +1183,43 @@ h5
           top: auto
           left: auto
 
+    .jot-cont
+      max-width: 150px
+      display: flex
+      flex-flow: row nowrap
+      position: absolute
+      top: 0
+      right: 0
+
+      p
+        margin-bottom: 0 !important
+        color: #fff
+
+      .btn_pulse
+        height: 54px
+        width: 54px
+        margin-right: 35px
+
+        i
+          z-index: 10
+
+      .t-b
+        font-size: 20px
+        color: #d43e37
+        opacity: 1
+
 .form
   color: #000
-  padding: 50px 0 100px
+  padding: 60px 0 90px
   position: relative
   overflow: hidden
+
+  &-item, &-actions
+    margin: 0 0 30px
+
+  &-item
+    max-width: 341px
+    width: 100%
 
   .iframe-wrap
     position: relative
@@ -1131,10 +1234,9 @@ h5
 
     iframe
       width: 100%
-      height: 800px
+      height: 702px
       position: relative
       z-index: 1
-      top: -105px
 
   .parallax
     img
@@ -1153,9 +1255,6 @@ h5
     display: block
     font-size: 20px
     font-weight: 500
-
-    &:not(:last-child)
-      margin-bottom: 30px
 
     &.frnw
       display: flex
@@ -1215,22 +1314,35 @@ h5
       margin: 0
 
     label
-      display: inline-block
+      display: block
       height: 40px
       width: 145px
       position: relative
 
+    svg
+      height: 100%
+      width: 100%
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 1
+      transition: all 0.3s
+
+      path
+        fill: #00bfb3
+
     input
-      background: #000
+      background: transparent
       border: none
       padding: 0
       margin: 0
-      transition: all 0.3s
       color: #fff
       position: relative
+      z-index: 2
+      transition: all 0.3s
 
       &:hover
-        background: #00bfb3
+        color: #000
 
   .btn-plus
     cursor: pointer
@@ -1243,7 +1355,33 @@ h5
     height: 40px
     position: relative
 
+  #ajax-wrapper
+    max-width: 341px
+    width: 100%
+    height: 40px
+    position: relative
+    cursor: pointer
+    z-index: 1
+    background: transparent
+    margin-bottom: 50px
+
+    &:before
+      content: ""
+      height: 40px
+      width: 44px
+      background: url(../img/pls.png) no-repeat center transparent
+      display: block
+      position: absolute
+      top: 0
+      right: 0
+      z-index: -1
+
+    .js-form-managed-file
+      display: none
+
   &_con
+    padding-top: 110px
+
     .parallax
       img
         position: absolute
@@ -1304,6 +1442,17 @@ h5
 .act
   padding: 185px 0 75px
   background: #fff
+  position: relative
+
+  .parallax
+    img
+      &:nth-of-type(1)
+        top: 155px
+        left: 0
+
+      &:nth-of-type(2)
+        bottom: 35px
+        right: 0
 
   .row
     position: relative
@@ -1320,6 +1469,7 @@ h5
       flex-flow: row nowrap
       justify-content: center
       align-items: center
+      z-index: 5
 
       i
         color: #00bfb3
@@ -1330,17 +1480,10 @@ h5
   h2
     color: #000
 
+  &_tp
+    padding: 100px 0 70px
+
 .slider
-  &__label
-    position: absolute
-    z-index: 5
-    left: 0
-    top: -150px
-
-    span
-      opacity: 0.4
-      color: #ffffff
-
   &__item
     position: relative
     padding: 245px 0 90px
@@ -1353,6 +1496,37 @@ h5
       right: 0
       left: 0
       background: rgba(0, 0, 0, 1)
+
+  &__label
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    position: absolute
+    z-index: 5
+    left: 0
+    top: -165px
+
+    svg
+      margin-right: 15px
+
+    span
+      opacity: 0.4
+      color: #ffffff
+
+  &__wrap
+    background: url("../img/sllbg.png") no-repeat center transparent
+    position: relative
+    width: 59px
+    height: 54px
+    margin-right: 10px
+
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      height: 16px
+      width: 16px !important
 
   &__t-b
     +frnw
@@ -1392,23 +1566,141 @@ h5
 .cont
   overflow: hidden
   padding: 60px 0 120px
+  position: relative
+
+  .parallax
+    img
+      &:nth-of-type(1)
+        top: 90px
+        left: 0
+
+      &:nth-of-type(2)
+        right: 0
+        bottom: 485px
+
+      &:nth-of-type(3)
+        left: 0
+        bottom: -128px
+
+  h2
+    color: #000
+    margin-bottom: 115px
 
   &-i
-    &:not(:last-child)
-      margin-bottom: 45px
+    margin-bottom: 45px
 
-  p
-    color: #79828b
-    line-height: 28px
+    &_img
+      img
+        margin: 130px 0 80px
 
-    &:not(:last-of-type)
-      margin-bottom: 20px
+    .hex
+      margin-bottom: 30px
 
-    &:last-of-type
-      margin-bottom: 10px
+    h3
+      font-weight: 500
+      color: #000
+      line-height: 40px
+      margin-bottom: 15px
+
+    p
+      color: #79828b
+      line-height: 28px
+
+      &:not(:last-of-type)
+        margin-bottom: 20px
+
+      &:last-of-type
+        margin-bottom: 10px
+
+    img
+      max-width: 100%
+
+    ul
+      padding-left: 40px
+
+      p
+        &:first-of-type
+          margin: 0px
+          text-transform: uppercase
+          color: #00bab3
+          position: relative
+
+          &:before
+            content: ""
+            position: absolute
+            left: -15px
+            top: 50%
+            display: block
+            height: 5px
+            width: 5px
+            border-radius: 50%
+            background-color: #00bfb3
+            transform: translateY(-50%)
 
     strong
       color: #79828b
+      font-weight: 600
+
+  &_about
+    h2
+      margin-bottom: 120px
+      color: #000
+
+  &-img
+    &-wrap
+      width: 100%
+      position: relative
+      z-index: 2
+      overflow: hidden
+
+    &-c
+      overflow: hidden
+      height: 100%
+      max-height: 420px
+      clip-path: polygon(0% 50.25%, 1.1% 46.45%, 7.85% 33.25%, 16.85% 16.75%, 23.15% 3.8%, 25.4% 1.25%, 28.75% 0.25%, 51% 0.25%, 65.15% 0%, 71.9% 0.25%, 75.5% 1.8%, 77.3% 3.8%, 86.05% 20.3%, 93.7% 36.3%, 98.65% 46.2%, 100% 50%, 99.1% 53.05%, 96.85% 57.35%, 91.9% 67%, 84.7% 80.95%, 80% 90.85%, 77.3% 96.45%, 75.05% 98.75%, 72.35% 99.75%, 67.4% 99.75%, 28.3% 99.75%, 25.15% 99.25%, 22.9% 96.45%, 16.4% 83%, 6.5% 62.95%, 1.35% 53.55%)
+
+      img
+        z-index: 1
+        position: relative
+        left: 50%
+        transform: translate(-50%, 0)
+        height: 100%
+
+  &_act
+    .parallax
+      img
+        &:nth-of-type(1)
+          right: 0
+          top: 0
+          left: auto
+
+        &:nth-of-type(2)
+          left: 0
+          bottom: -142px
+
+#webform-submission-registration-node-10-add-form, #webform-submission-registration-node-11-add-form
+  .form-wrap
+    div
+      flex: 0 1 341px
+
+#edit-actions
+  label
+    position: relative
+    z-index: 2
+
+  input
+    color: #fff
+    transition: all 0.3s
+
+    &:hover
+      color: #000
+
+  svg
+    position: relative
+    z-index: 1
+
+    path
+      fill: #00bfb3
 
 .loc
   .container-fluid
@@ -1466,6 +1758,521 @@ h5
     p
       text-align: center
       color: #545c64
+      font-weight: 300
+
+      &:nth-of-type(1)
+        font-size: 20px
+        font-weight: 500
+        margin-bottom: 15px
+
+    .img-wrap
+      margin-bottom: 30px
+
+//AboutUs
+
+.slider-c
+  padding: 110px 0 115px
+
+  h2
+    color: #000
+    margin-bottom: 120px
+
+  &-b
+    max-width: 900px
+    margin: 0 auto
+
+    & .owl-stage
+      display: flex
+      align-items: center
+
+    &2
+      max-width: 1030px
+      margin: 0 auto
+
+      & .owl-stage
+        display: flex
+        align-items: center
+
+    &__item
+      text-align: center
+
+      img
+        max-width: 100%
+        width: auto !important
+        transition: all 0.3s
+        filter: grayscale(100%)
+        cursor: pointer
+        display: inline-block !important
+
+        &:hover
+          filter: grayscale(0)
+
+  &_bg
+    &_c
+      background: #00beb3
+
+.ilab
+  padding: 110px 0 120px
+  background: url("../img/ilabbg.png") no-repeat (center / cover) #000
+
+  h2
+    margin-bottom: 75px
+
+  &-b
+    max-width: 850px
+    margin: 0 auto
+
+    +frw
+
+    justify-content: space-around
+
+    &__item
+      text-align: center
+      flex: 0 0 25%
+
+      &:not(:last-child)
+        margin-bottom: 60px
+
+    &__img-wrap
+      position: relative
+      margin-bottom: 30px
+
+      img
+        &:first-of-type
+          max-width: 142px
+
+        &:last-of-type
+          max-width: 64px
+          width: 100%
+          height: 96px
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+
+  h5
+    margin-bottom: 10px
+
+  p
+    font-weight: 300
+    opacity: 0.4
+
+.obj
+  padding: 110px 0 150px
+  background: url("../img/objbg.png") no-repeat (center / cover) #000
+
+  h2
+    margin-bottom: 110px
+
+  &-b
+    max-width: 850px
+    width: 100%
+    margin: 0 auto
+
+    +frw
+
+    justify-content: space-around
+
+    &__item
+      flex: 0 0 40%
+
+      &:nth-child(2n+1)
+        flex: 0 0 60%
+
+      &:not(:last-child)
+        margin-bottom: 45px
+
+      img
+        margin-bottom: 30px
+
+      h5
+        margin-bottom: 15px
+
+      p
+        line-height: 28px
+        opacity: 0.4
+        max-width: 313px
+
+.focus-a
+  background: #00bfb3
+  padding: 120px 0 0
+  min-height: 1640px
+  position: relative
+
+  .parallax
+    img
+      &:nth-of-type(1)
+        top: 0
+        right: 0
+
+      &:nth-of-type(2)
+        top: 473px
+        left: 0
+
+      &:nth-of-type(3)
+        bottom: 400px
+        left: 0
+
+  h2
+    margin-bottom: 55px
+
+  .col-md-7 p
+    margin-bottom: 55px
+
+  .col-lg-10
+    position: relative
+
+  &-b
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+
+    &__item
+      +fcnw
+
+      padding: 90px 0 75px
+      background: #000
+      position: relative
+
+      &:nth-of-type(1)
+        background: url(../img/itmbg1.png) no-repeat (center / cover) #000
+
+        &::after
+          content: url(../img/arrowwr.png)
+          position: absolute
+          right: -70px
+          bottom: -90px
+
+      &:nth-of-type(2)
+        padding: 90px 0
+        background: url("../img/opbg.png") no-repeat (center / cover) #0bb7ac
+        text-align: center
+
+        &::after
+          content: url(../img/arrowwl.png)
+          position: absolute
+          left: -70px
+          bottom: -125px
+
+      &:nth-of-type(3)
+        background: url("../img/fabg.png") no-repeat (center / cover) #000
+        padding: 90px 85px 75px
+
+      h3
+        margin-bottom: 60px
+        text-align: center
+
+  &-f
+    &-1
+      &__item
+        +frw
+
+        justify-content: space-around
+
+        img
+          width: 55px
+          height: 55px
+
+    &-2
+      +frw
+
+      justify-content: space-around
+
+      &__item
+        flex: 0 1 25%
+
+        img
+          margin-bottom: 30px
+          height: 55px
+          width: auto
+
+        &:not(:last-child)
+          margin-bottom: 50px
+
+    &-3
+      +frw
+
+      justify-content: space-around
+
+      &__item
+        flex: 0 1 250px
+        text-align: left
+
+        &:not(:last-of-type)
+          margin-bottom: 40px
+
+        .img-wrap
+          position: relative
+          background: url("../img/sllbg.png") no-repeat center transparent
+          width: 59px
+          height: 54px
+          margin-bottom: 25px
+
+          img
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+
+        h5
+          margin-bottom: 10px
+
+        p
+          line-height: 28px
+          opacity: 0.4
+
+.inn-space
+  padding: 300px 0 120px
+  position: relative
+
+  .parallax
+    img
+      &:nth-of-type(1)
+        left: 0
+        top: 300px
+
+      &:nth-of-type(2)
+        top: 1960px
+        left: 0
+
+      &:nth-of-type(3)
+        bottom: 883px
+        right: 0
+
+  h2
+    color: #000
+    margin-bottom: 75px
+
+  &__img-wrap
+    position: relative
+    margin-bottom: 120px
+
+    img
+      width: 100%
+
+.imp
+  padding: 110px 0
+  position: relative
+
+  .parallax
+    img
+      &:nth-of-type(1)
+        top: 235px
+        left: -80px
+
+      &:nth-of-type(2)
+        top: 198px
+        right: 0
+
+      &:nth-of-type(3)
+        top: 1171px
+        left: 0
+
+      &:nth-of-type(4)
+        bottom: 484px
+        right: 0
+
+      &:nth-of-type(5)
+        bottom: 88px
+        left: 0
+
+  .col-12
+    h2, p
+      margin-bottom: 50px
+
+    h2, p
+      color: #000
+
+    p
+      max-width: 595px
+      margin: 0 auto 50px
+      line-height: 28px
+
+  &-b
+    &__i
+      padding: 50px 0
+      background: #00bfb3
+      position: relative
+
+      &:nth-of-type(1)
+        &::before
+          content: url(../img/arrowl.png)
+          position: absolute
+          left: -106px
+          bottom: -124px
+
+        &::after
+          content: attr(data-text)
+          max-width: 146px
+          display: block
+          position: absolute
+          right: -120px
+          font-size: 20px
+          color: #000
+          transform: rotate(-90deg)
+          font-weight: 500
+
+      &:nth-of-type(2)
+        max-width: 680px
+        margin: 0 auto
+
+        &::before
+          content: url(../img/arrowr.png)
+          position: absolute
+          right: -105px
+          bottom: -152px
+
+        &::after
+          content: attr(data-text)
+          max-width: 255px
+          text-align: left
+          display: block
+          position: absolute
+          font-size: 20px
+          font-weight: 500
+          color: #000
+          transform: rotate(-90deg)
+          right: -170px
+
+      &:nth-of-type(3), &:nth-of-type(4)
+        max-width: 530px
+        margin: 0 auto
+
+      &:nth-of-type(4)
+        &::before
+          content: url(../img/arrowl.png)
+          position: absolute
+          left: -182px
+          bottom: -81px
+
+        &::after
+          position: absolute
+          font-size: 20px
+          content: attr(data-text)
+          max-width: 215px
+          color: #000
+          font-weight: 500
+          transform: rotate(-90deg)
+          right: -140px
+
+      &:nth-of-type(5)
+        max-width: 680px
+        margin: 0 auto
+
+        &::after
+          position: absolute
+          font-size: 20px
+          content: attr(data-text)
+          max-width: 215px
+          color: #000
+          font-weight: 500
+          transform: rotate(-90deg)
+          right: -140px
+
+      +fcnw
+
+      justify-content: center
+      align-items: center
+
+      h3
+        margin-bottom: 20px
+
+      img
+        margin-bottom: 30px
+
+      p
+        max-width: 360px
+        text-align: center
+
+      &:not(:last-child)
+        margin-bottom: 30px
+
+      &:last-of-type
+        margin-bottom: 60px
+
+      &_bg
+        background: url("../img/ideatebg.png") no-repeat (center / cover) #000
+
+      &_m
+        h3, img
+          margin-bottom: 45px
+
+    &__img-wrap
+      +frw
+
+      max-width: 455px
+      width: 100%
+      margin: 0 auto
+      justify-content: space-around
+
+    & > img
+      margin: 30px 0 60px 0
+      max-width: 100%
+
+.b-blog
+  header
+    background: #000
+
+  .container-fluid, .container
+    padding: 0
+
+  &-1
+    background: #00beb3
+
+    h2
+      text-transform: none
+
+  &-2
+    background: #fff
+
+#webform_submission_submit_project_node_16_add_form-ajax
+  background: #000
+
+#webform-submission-submit-project-node-16-add-form
+  max-width: 1170px
+  padding: 0 15px
+  margin: 0 auto
+
+.webform
+  &-progress
+    background: #000
+
+    &-tracker
+      margin: 0 auto 60px !important
+      padding: 250px 0 0 25px
+
+    .progress
+      &-step
+        &[data-webform-page="webform_preview"], &[data-webform-page="webform_confirmation"]
+          display: none
+
+        &.is-active
+          position: relative
+
+          .progress-title
+            opacity: 1
+
+          &:before
+            content: ""
+            position: absolute
+            height: 2px
+            width: 100%
+            background-color: #00bfb3
+            display: block
+            left: 0
+            bottom: -20px
+
+      &-marker
+        display: none
+
+      &-text
+        padding: 0 !important
+
+      &-title
+        color: #ffffff
+        font-size: 30px
+        opacity: 0.4
 
 .ajax-progress-fullscreen
   display: none
