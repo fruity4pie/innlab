@@ -9,6 +9,14 @@
   		}
 		});
 
+		let projectBtn = $('.jot_t-p .jot-cont');
+		let popUp = $('.dr-popup');
+
+		projectBtn.on('click', function(e) {
+			e.preventDefault();
+			popUp.toggleClass('active');
+		})
+
 		//Nav
 		let navLinks = $('.header__list a');
 		navLinks.on('click', function(e) {
@@ -55,14 +63,14 @@
 		//Carousel
 		$('.slider').owlCarousel({
 	  	loop:true,
-	  	nav:false,
 			autoplay: true,
 			autoplayTimeout: 1500,
-	  	navText: [`<img src="img/arl.png" alt="previous button">`, `<img src="img/arr.png" alt="next button">`],
+	  	navText: [`<img src="/themes/innovationlab/img/arl.png" alt="previous button">`, `<img src="/themes/innovationlab/img/arr.png" alt="next button">`],
 	  	dots: false,
 	  	responsive:{
 	    	0:{
 	     		items:1,
+					nav:false,
 	    	},
 				1100: {
 					items:1,
@@ -75,7 +83,7 @@
 		$('.slider-c-b').owlCarousel({
 	  	loop:true,
 	  	nav:true,
-	  	navText: [`<img src="img/arl.png" alt="previous button">`, `<img src="img/arr.png" alt="next button">`],
+	  	navText: [`<img src="/themes/innovationlab/img/arl.png" alt="previous button">`, `<img src="/themes/innovationlab/img/arr.png" alt="next button">`],
 	  	dots: false,
 	  	responsive:{
 	    	0:{
@@ -95,7 +103,7 @@
 		$('.slider-c-b2').owlCarousel({
 	  	loop:true,
 	  	nav:true,
-	  	navText: [`<img src="img/arl.png" alt="previous button">`, `<img src="img/arr.png" alt="next button">`],
+	  	navText: [`<img src="/themes/innovationlab/img/arl.png" alt="previous button">`, `<img src="/themes/innovationlab/img/arr.png" alt="next button">`],
 	  	dots: false,
 	  	responsive:{
 	    	0:{
@@ -118,6 +126,7 @@
 	  	}
 		});
 
+
 		//GoToProjects
 		let anchors = $('.projects a');
 		let containers = $('.l-projects');
@@ -126,7 +135,10 @@
 			e.preventDefault();
 			let dataHref = $(this).attr('href');
 			containers.removeClass('active');
-			$(`#${dataHref}`).addClass('active');
+			$(dataHref).addClass('active');
+			let bTop = $(dataHref).offset().top;
+			let hTop = $('.header').height();
+			$('body,html').animate({scrollTop: bTop - hTop}, 1500);
 		})
 
 		let container = document.getElementById('lottie');
@@ -136,7 +148,7 @@
 			    renderer: 'svg',
 			    loop: true,
 			    autoplay: true,
-			    path: 'js/data.json'
+			    path: '/themes/innovationlab/js/data.json'
 			};
 
 			var anim;
