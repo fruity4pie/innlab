@@ -11,10 +11,18 @@
 
 		let projectBtn = $('.jot_t-p .jot-cont');
 		let popUp = $('.dr-popup');
+		let popUpClose = $('.dr-popup .close-pf');
 
 		projectBtn.on('click', function(e) {
 			e.preventDefault();
 			popUp.toggleClass('active');
+			$('body').addClass('active');
+		})
+
+		popUpClose.on('click', function(e) {
+			e.preventDefault();
+			popUp.removeClass('active');
+			$('body').removeClass('active');
 		})
 
 		//Nav
@@ -83,7 +91,7 @@
 		$('.slider-c-b').owlCarousel({
 	  	loop:true,
 	  	nav:true,
-	  	navText: [`<img src="/themes/innovationlab/img/arl.png" alt="previous button">`, `<img src="/themes/innovationlab/img/arr.png" alt="next button">`],
+	  	navText: [`<img src="/themes/innovationlab/img/agl.png" alt="previous button">`, `<img src="/themes/innovationlab/img/agr.png" alt="next button">`],
 	  	dots: false,
 	  	responsive:{
 	    	0:{
